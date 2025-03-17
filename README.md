@@ -1,10 +1,10 @@
 # How to create Self Signed Certificate
 
 ```
-   35  openssl genrsa -out sy.key 2048
-   36  openssl req -new -key sy.key -out sy.csr
-   37  openssl x509 -req -in sy.csr -signkey sy.key -out sy.crt
-   32  openssl x509 -in sy.crt -out sy.pem -outform PEM
+35  openssl genrsa -out sy.key 2048
+36  openssl req -new -key sy.key -out sy.csr
+37  openssl x509 -req -in sy.csr -signkey sy.key -out sy.crt
+32  openssl x509 -in sy.crt -out sy.pem -outform PEM
 ```
 
 ```
