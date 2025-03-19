@@ -30,3 +30,6 @@ A challenge password []:
 An optional company name []:
 #
 ```
+Links to read:
+1. one liner to create self signed cert: https://stackoverflow.com/a/10176685/29989976
+2. terraform provider: https://registry.terraform.io/providers/hashicorp/tls/latest
