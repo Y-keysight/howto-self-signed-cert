@@ -1,3 +1,10 @@
+  692  openssl req -new -sha256 -key domain.key -out domain.csr -addext "subjectAltName=IP:10.36.159.75"
+  693  openssl req -in domain.csr -text -noout
+  694  openssl x509 -req -in domain.csr -signkey domain.key -out domain.crt
+  695  openssl x509 -in domain.crt -out.domain.pem -ooutform PEM
+  696  openssl x509 -in domain.pem -text -noout
+---
+
 $ openssl req -new -sha256 -key domain.key -out domain.csr -addext "subjectAltName=IP:10.36.159.75"
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
@@ -70,20 +77,79 @@ Certificate Request:
 $ openssl x509 -req -in domain.csr -signkey domain.key -out domain.crt
 Certificate request self-signature ok
 subject=C = US, ST = Texas, L = Austin, O = keysight, OU = ktas, CN = hawkeye
-$ openssl x509 -in domain.crt -out.domain.pem -ooutform PEM
-x509: Use -help for summary.
+$ openssl x509 -in domain.crt -out domain.pem -outform PEM
+$ openssl x509 -in domain.pem -text -noout
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number:
+            63:a6:69:ac:f9:fd:93:91:1a:e2:5e:04:22:82:a9:c6:b0:b5:45:a7
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, ST = Texas, L = Austin, O = keysight, OU = ktas, CN = hawkeye
+        Validity
+            Not Before: Mar 21 06:10:14 2025 GMT
+            Not After : Apr 20 06:10:14 2025 GMT
+        Subject: C = US, ST = Texas, L = Austin, O = keysight, OU = ktas, CN = hawkeye
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:d7:17:69:0b:e9:4f:28:8c:09:d6:0f:ea:0c:9a:
+                    93:7e:c4:14:77:1e:c3:b4:03:e0:f9:73:89:18:fd:
+                    a3:d5:83:06:31:de:94:28:fd:90:c6:dd:a9:61:f3:
+                    78:db:09:0e:25:9c:bf:d9:ef:b5:36:34:f5:a6:fd:
+                    2d:c4:06:ae:43:9c:f9:c8:dd:74:1c:b1:64:d8:df:
+                    2e:67:a8:03:f2:c2:71:f0:3d:79:65:7f:a8:cc:5f:
+                    89:79:c2:11:36:8e:64:a7:f0:5e:1c:fb:6d:05:4b:
+                    49:6b:ca:c2:82:f7:dd:5b:13:81:9a:77:d8:20:eb:
+                    9f:17:24:88:ef:5a:7d:4b:98:a9:63:a8:05:c6:19:
+                    7c:f4:8f:2f:eb:3a:2c:d1:fa:2e:c3:96:3a:ab:e6:
+                    cf:b6:7e:aa:18:1c:9c:ae:91:23:28:fe:b8:57:53:
+                    aa:e9:e9:32:56:2d:83:f8:96:c4:05:2b:b9:5c:5d:
+                    a6:a7:98:83:22:f6:53:46:4b:40:71:dd:63:5e:35:
+                    37:47:22:93:1f:ae:1a:8b:76:ca:ec:7b:8a:41:eb:
+                    2a:ea:81:7f:81:af:54:8d:c0:e9:58:f1:f1:b9:57:
+                    9a:81:58:ac:ca:73:69:b5:9d:10:a6:d3:fe:e7:b5:
+                    39:04:27:f1:07:4d:80:b5:b9:15:de:86:50:78:5a:
+                    1e:29
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        a2:89:78:b2:4a:4b:d4:1a:6e:b9:c6:2a:47:16:dc:63:45:c5:
+        ad:75:b9:8e:11:35:c0:d9:5d:52:bb:18:ee:46:d6:cf:fa:b9:
+        1d:60:f0:72:5d:ad:75:5a:0f:03:19:6b:58:04:cc:a2:43:f8:
+        7d:99:73:78:0e:7b:0b:8b:97:50:64:c5:02:6d:c8:a5:8d:b9:
+        dd:1f:bd:0f:ef:6b:4e:45:8e:74:11:5e:04:41:41:72:50:cf:
+        5f:e5:1e:46:ec:48:79:4c:2d:54:e2:c0:11:4c:5b:ac:70:57:
+        6e:f1:be:90:8e:f1:cd:a7:37:61:2b:97:39:6c:45:97:e4:85:
+        7f:55:6f:14:40:eb:b6:93:b9:61:9b:92:6f:cf:6d:ef:88:f8:
+        3c:17:10:31:eb:e2:b9:09:8c:2f:b0:e8:8f:15:2c:6e:eb:dd:
+        70:50:c6:0d:4f:1e:c2:37:16:13:85:6c:80:53:be:16:a0:0b:
+        4d:cb:14:df:6a:04:11:2f:c8:bf:d2:d7:8d:b3:8b:3a:f0:d3:
+        c7:c2:27:5f:ce:34:81:64:ed:f0:30:0b:39:09:b7:5e:64:d0:
+        bd:74:db:ad:07:04:25:72:fa:73:90:d1:dd:d7:3c:92:4f:66:
+        ef:6d:be:e1:3f:ca:12:f9:56:e2:00:1b:c0:8e:52:d0:62:23:
+        1d:3a:31:de
+$
+$ cat san.ext
+subjectAltName = IP:10.36.159.75
+$
+$ openssl x509 -req -in domain.csr -signkey domain.key -out domain.crt -extfile san.ext
+Certificate request self-signature ok
+subject=C = US, ST = Texas, L = Austin, O = keysight, OU = ktas, CN = hawkeye
+$ openssl x509 -in domain.crt -out domain.pem -outform PEM
 $ openssl x509 -in domain.pem -text -noout
 Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
-            7e:99:9f:5c:2c:6c:0f:bd:9c:8d:87:1f:a8:e7:e4:78:8c:d6:df:ba
+            6b:5f:6b:9a:64:ac:88:1d:aa:d6:94:0f:f4:f1:2d:84:10:29:23:e3
         Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C = US, ST = Texas, L = Austin, O = Keysight, OU = KTAS, CN = hawkeye, emailAddress = seung-yeop.yang@keysight.com
+        Issuer: C = US, ST = Texas, L = Austin, O = keysight, OU = ktas, CN = hawkeye
         Validity
-            Not Before: Mar 21 05:35:07 2025 GMT
-            Not After : Apr 20 05:35:07 2025 GMT
-        Subject: C = US, ST = Texas, L = Austin, O = Keysight, OU = KTAS, CN = hawkeye, emailAddress = seung-yeop.yang@keysight.com
+            Not Before: Mar 21 06:21:14 2025 GMT
+            Not After : Apr 20 06:21:14 2025 GMT
+        Subject: C = US, ST = Texas, L = Austin, O = keysight, OU = ktas, CN = hawkeye
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (2048 bit)
@@ -114,19 +180,19 @@ Certificate:
                 95:38:CF:5D:33:6E:D7:AC:DD:D5:3D:47:AB:24:21:F5:AC:B4:72:F4
     Signature Algorithm: sha256WithRSAEncryption
     Signature Value:
-        42:ec:12:b3:ad:c3:9d:21:08:6c:d9:f7:01:05:46:b5:b9:75:
-        97:3b:88:2d:53:cf:1b:0f:24:74:c3:88:f9:9b:3f:18:a3:24:
-        ea:0a:e6:65:da:36:fc:85:b2:bd:e3:15:99:a1:b8:63:97:cb:
-        17:96:93:65:18:fe:b4:f9:32:9e:0f:72:95:69:1b:93:2f:30:
-        18:5f:5b:11:43:de:82:93:5d:51:f2:b9:3a:94:b3:e1:ff:a2:
-        a6:38:7c:ad:5b:cc:fa:23:a8:01:6c:0d:cc:a1:c7:7f:32:a3:
-        9c:6c:45:04:af:6d:4a:83:7e:51:50:44:61:a4:1e:bd:cd:cb:
-        5b:0f:90:fe:2e:39:a5:e5:91:00:f1:b8:60:2b:3b:d5:dd:97:
-        00:6a:30:5e:6b:7c:a3:11:e6:72:58:a8:f9:2d:da:80:7b:97:
-        ae:ed:0b:c9:c6:f9:aa:17:30:63:1e:11:24:be:c6:97:4c:83:
-        45:eb:2e:b8:fb:6f:24:d0:43:83:c7:5e:3b:59:35:7f:79:fc:
-        0a:f6:1c:f2:c2:c1:ac:71:34:6e:b4:fa:33:ff:7b:0c:fe:d6:
-        80:2b:c0:27:20:b1:8b:8c:ec:c9:04:d4:59:63:85:23:70:3a:
-        eb:41:f2:1a:d3:17:52:e5:ff:49:bc:49:ac:83:5b:e2:47:d6:
-        7d:73:ca:97
-$ 
+        7b:e1:8d:e2:45:d4:e8:c4:90:fa:2a:76:4b:82:60:f1:ce:62:
+        9d:87:3b:75:1b:a2:25:dc:77:78:7f:2e:25:62:79:f7:70:20:
+        3f:b5:da:e4:b1:bf:40:29:6b:ff:79:ed:5d:e0:47:1b:dc:c6:
+        cc:a0:40:21:fd:de:2b:e1:4c:12:d9:bc:77:94:58:cc:1f:01:
+        fb:4e:33:29:1f:b5:84:8c:26:21:68:77:af:bc:10:4c:9a:9a:
+        97:17:b6:cc:f7:2a:bb:97:3f:f0:8f:49:34:4a:6f:61:03:53:
+        89:52:d0:ae:c5:b8:dc:05:46:1a:80:55:3a:2f:14:41:5b:2c:
+        70:de:9f:09:4a:98:4f:c0:b0:6b:64:62:11:91:49:eb:cb:19:
+        bd:8a:2f:e0:dc:a4:40:76:47:87:d5:2c:b6:9f:4a:8f:ac:5b:
+        64:98:26:80:b7:f9:91:4b:40:da:48:c2:59:49:85:6f:48:cf:
+        b1:b3:3b:a5:73:3c:35:ea:6a:b5:e5:37:56:48:e7:e5:6c:aa:
+        53:94:b6:e4:ea:df:a9:56:f8:06:67:e1:b1:fc:41:de:4d:c6:
+        c9:fe:fc:fa:39:7f:18:de:41:8c:ec:dc:e4:13:7c:cc:34:f9:
+        e2:fb:83:16:ca:19:fd:cf:25:de:97:1b:d1:b8:73:ce:94:58:
+        e0:b3:db:4d
+$
