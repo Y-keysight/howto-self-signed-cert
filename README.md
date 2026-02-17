@@ -97,6 +97,6 @@ An optional company name []:
 #
 ```
 Links to read:
-1. one liner to create self signed cert: self_signed_cert[https://stackoverflow.com/a/10176685/29989976]
+1. one liner to create self signed cert: [self_signed_cert](https://stackoverflow.com/a/10176685/29989976)
 2. terraform provider: https://registry.terraform.io/providers/hashicorp/tls/latest
 3. ansible crypto modules: https://docs.ansible.com/ansible/latest/collections/community/crypto/index.html
